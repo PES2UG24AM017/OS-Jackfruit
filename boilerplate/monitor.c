@@ -339,7 +339,7 @@ static int __init monitor_init(void)
 static void __exit monitor_exit(void)
 {
     struct monitored_entry *entry, *tmp;
-    del_timer_sync(&monitor_timer);
+    timer_delete_sync(&monitor_timer);
 
     mutex_lock(&monitor_lock);
     list_for_each_entry_safe(entry, tmp, &monitored_list, list) {
